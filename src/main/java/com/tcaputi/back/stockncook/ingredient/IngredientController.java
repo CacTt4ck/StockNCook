@@ -1,5 +1,6 @@
 package com.tcaputi.back.stockncook.ingredient;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -42,6 +43,14 @@ class IngredientController {
     public void deleteIngredient(@PathVariable Long id) {
         ingredientService.deleteIngredient(id);
     }
+
+    @PostMapping("/consume")
+    public IngredientDto consumeIngredient(@Valid @RequestBody ConsumeIngredientDto dto) {
+        Ingredient updatedIngredient = ingredientService.consumeIngredient(dto.getIngredientId(), dto.getAmountInGrams());
+        return convertToDto(updatedIngredient);
+    }
+
+
 
     private IngredientDto convertToDto(Ingredient ingredient) {
         return modelMapper.map(ingredient, IngredientDto.class);

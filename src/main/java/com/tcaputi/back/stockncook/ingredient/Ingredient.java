@@ -23,13 +23,17 @@ public class Ingredient{
     private Double carbohydrates;
     private Double calories;
 
-    private Double quantity;
+    private Double quantity;        // total quantity for recipe usage (openQuantity + unitStock * unitWeight)
 
     @Column(unique = true)
     private String ean13;
 
     @Enumerated(EnumType.STRING)
     private Unit unit;
+
+    private Integer unitStock;      // number of full units (e.g., 5 pots)
+    private Double openQuantity;    // quantity of an open unit (e.g., 150g left)
+    private Double unitWeight;      // weight of one unit (e.g., 450g for a Skyr pot)
 
     @Getter
     public enum Unit {
