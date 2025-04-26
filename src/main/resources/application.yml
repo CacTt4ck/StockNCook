@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: Stock&Cook
+  datasource:
+    url: jdbc:h2:file:./data/stockncook;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: admin
+    password: admin
+
+  jpa:
+    hibernate:
+      ddl-auto: update  # create / create-drop / update / validate
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console  # Access it at http://localhost:8080/h2-console
