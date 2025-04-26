@@ -2,12 +2,14 @@ package com.tcaputi.back.stockncook.ingredient;
 
 import com.tcaputi.back.stockncook.ingredient.openfoodfacts.OpenFoodFactsService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 class IngredientService {
@@ -27,6 +29,7 @@ class IngredientService {
         if (ingredient.getEan13() != null) {
             return ingredientRepository.findByEan13(ingredient.getEan13())
                     .orElseGet(() -> {
+                        log.info("Fetching ingredient from OpenFoodFacts for EAN: [{}]", ingredient.getEan13());
                         Optional<Ingredient> fromOpenFoodFacts = openFoodFactsService.fetchIngredientFromOpenFoodFacts(ingredient.getEan13());
                         return fromOpenFoodFacts.map(ingredientRepository::save).orElseGet(() -> ingredientRepository.save(ingredient));
                     });
