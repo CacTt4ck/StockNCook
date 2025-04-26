@@ -1,0 +1,17 @@
+image: eclipse-temurin:21-jdk
+
+stages:
+  - build
+
+build-test:
+  stage: build
+  tags:
+    - java
+    - springboot
+  script:
+    - chmod +x ./gradlew
+    - ./gradlew clean build
+  rules:
+    - if: $CI_COMMIT_REF_PROTECTED == "true"
+      when: always
+    - when: never
