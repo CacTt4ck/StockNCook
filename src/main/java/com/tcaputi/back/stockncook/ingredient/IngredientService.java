@@ -1,16 +1,22 @@
 package com.tcaputi.back.stockncook.ingredient;
 
+import com.tcaputi.back.stockncook.ingredient.openfoodfacts.OpenFoodFactsService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 class IngredientService {
 
     private final IngredientRepository ingredientRepository;
+    private final OpenFoodFactsService openFoodFactsService;
 
-    public Iterable<Ingredient> getAllIngredients() {
-        return ingredientRepository.findAll();
+    public Page<Ingredient> getAllIngredients(Pageable pageable) {
+        return ingredientRepository.findAll(pageable);
     }
 
     public Ingredient getIngredientById(Long id) {
@@ -18,7 +24,15 @@ class IngredientService {
     }
 
     public Ingredient addIngredient(Ingredient ingredient) {
-        return ingredientRepository.save(ingredient);
+        if (ingredient.getEan13() != null) {
+            return ingredientRepository.findByEan13(ingredient.getEan13())
+                    .orElseGet(() -> {
+                        Optional<Ingredient> fromOpenFoodFacts = openFoodFactsService.fetchIngredientFromOpenFoodFacts(ingredient.getEan13());
+                        return fromOpenFoodFacts.map(ingredientRepository::save).orElseGet(() -> ingredientRepository.save(ingredient));
+                    });
+        } else {
+            return ingredientRepository.save(ingredient);
+        }
     }
 
     public void deleteIngredient(Long id) {

@@ -1,6 +1,9 @@
 package com.tcaputi.back.stockncook.ingredient;
 
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -9,26 +12,30 @@ import org.springframework.web.bind.annotation.*;
 class IngredientController {
 
     private final IngredientService ingredientService;
+    private final ModelMapper modelMapper;
 
     @GetMapping
-    public Iterable<Ingredient> getAllIngredients() {
-        return ingredientService.getAllIngredients();
+    public Page<IngredientDto> getAllIngredients(Pageable pageable) {
+        return ingredientService.getAllIngredients(pageable)
+                .map(this::convertToDto);
     }
 
     @GetMapping("/{id}")
-    public Ingredient getIngredientById(@PathVariable Long id) {
-        return ingredientService.getIngredientById(id);
+    public IngredientDto getIngredientById(@PathVariable Long id) {
+        return convertToDto(ingredientService.getIngredientById(id));
     }
 
     @PostMapping
-    public Ingredient addIngredient(@RequestBody Ingredient ingredient) {
-        return ingredientService.addIngredient(ingredient);
+    public IngredientDto addIngredient(@RequestBody IngredientDto ingredientDto) {
+        Ingredient ingredient = convertToEntity(ingredientDto);
+        return convertToDto(ingredientService.addIngredient(ingredient));
     }
 
     @PutMapping("/{id}")
-    public Ingredient updateIngredient(@PathVariable Long id, @RequestBody Ingredient ingredient) {
+    public IngredientDto updateIngredient(@PathVariable Long id, @RequestBody IngredientDto ingredientDto) {
+        Ingredient ingredient = convertToEntity(ingredientDto);
         ingredient.setId(id);
-        return ingredientService.updateIngredient(ingredient);
+        return convertToDto(ingredientService.updateIngredient(ingredient));
     }
 
     @DeleteMapping("/{id}")
@@ -36,4 +43,11 @@ class IngredientController {
         ingredientService.deleteIngredient(id);
     }
 
+    private IngredientDto convertToDto(Ingredient ingredient) {
+        return modelMapper.map(ingredient, IngredientDto.class);
+    }
+
+    private Ingredient convertToEntity(IngredientDto ingredientDto) {
+        return modelMapper.map(ingredientDto, Ingredient.class);
+    }
 }
