@@ -1,5 +1,6 @@
 package com.tcaputi.back.stockncook.ingredient;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -7,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+@Tag(name = "Ingredients", description = "Operations related to ingredients")
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/ingredients")
