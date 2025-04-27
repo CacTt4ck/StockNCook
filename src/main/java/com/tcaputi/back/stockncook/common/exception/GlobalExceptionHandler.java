@@ -1,6 +1,6 @@
 package com.tcaputi.back.stockncook.common.exception;
 
-import com.tcaputi.back.stockncook.ingredient.IngredientException;
+import com.tcaputi.back.stockncook.ingredient.exception.IngredientException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,6 +1,9 @@
-package com.tcaputi.back.stockncook.ingredient;
+package com.tcaputi.back.stockncook.ingredient.service;
 
+import com.tcaputi.back.stockncook.ingredient.exception.IngredientException;
+import com.tcaputi.back.stockncook.ingredient.model.Ingredient;
 import com.tcaputi.back.stockncook.ingredient.openfoodfacts.OpenFoodFactsService;
+import com.tcaputi.back.stockncook.ingredient.repository.IngredientRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
