@@ -1,5 +1,9 @@
-package com.tcaputi.back.stockncook.ingredient;
+package com.tcaputi.back.stockncook.ingredient.controller;
 
+import com.tcaputi.back.stockncook.ingredient.service.IngredientService;
+import com.tcaputi.back.stockncook.ingredient.model.ConsumeIngredientDto;
+import com.tcaputi.back.stockncook.ingredient.model.Ingredient;
+import com.tcaputi.back.stockncook.ingredient.model.IngredientDto;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -51,8 +55,6 @@ class IngredientController {
         Ingredient updatedIngredient = ingredientService.consumeIngredient(dto.getIngredientId(), dto.getAmountInGrams());
         return convertToDto(updatedIngredient);
     }
-
-
 
     private IngredientDto convertToDto(Ingredient ingredient) {
         return modelMapper.map(ingredient, IngredientDto.class);

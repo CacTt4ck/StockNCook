@@ -1,4 +1,4 @@
-package com.tcaputi.back.stockncook.ingredient;
+package com.tcaputi.back.stockncook.ingredient.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

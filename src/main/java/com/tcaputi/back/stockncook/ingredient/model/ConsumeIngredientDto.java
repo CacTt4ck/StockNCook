@@ -1,4 +1,4 @@
-package com.tcaputi.back.stockncook.ingredient;
+package com.tcaputi.back.stockncook.ingredient.model;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;

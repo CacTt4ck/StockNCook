@@ -3,10 +3,10 @@ package com.tcaputi.back.stockncook;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import com.tcaputi.back.stockncook.ingredient.Ingredient;
-import com.tcaputi.back.stockncook.ingredient.IngredientException;
-import com.tcaputi.back.stockncook.ingredient.IngredientRepository;
-import com.tcaputi.back.stockncook.ingredient.IngredientService;
+import com.tcaputi.back.stockncook.ingredient.model.Ingredient;
+import com.tcaputi.back.stockncook.ingredient.exception.IngredientException;
+import com.tcaputi.back.stockncook.ingredient.repository.IngredientRepository;
+import com.tcaputi.back.stockncook.ingredient.service.IngredientService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

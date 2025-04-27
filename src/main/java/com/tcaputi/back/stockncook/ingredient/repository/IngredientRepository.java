@@ -1,5 +1,6 @@
-package com.tcaputi.back.stockncook.ingredient;
+package com.tcaputi.back.stockncook.ingredient.repository;
 
+import com.tcaputi.back.stockncook.ingredient.model.Ingredient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
