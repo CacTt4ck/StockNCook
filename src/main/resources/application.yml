@@ -1,22 +1,6 @@
 server:
   shutdown: graceful
+
 spring:
   application:
     name: Stock&Cook
-  datasource:
-    url: jdbc:postgresql://localhost:5432/stockncook
-    driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: postgres
-    hikari:
-      maximum-pool-size: 10
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: false
-    properties:
-      hibernate:
-        format_sql: true
-    database: postgresql
