@@ -2,5 +2,7 @@ server:
   shutdown: graceful
 
 spring:
+  devtools:
+    add-properties: true
   application:
     name: Stock&Cook

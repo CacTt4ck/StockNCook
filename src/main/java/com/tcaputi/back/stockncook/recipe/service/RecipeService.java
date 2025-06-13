@@ -2,6 +2,7 @@ package com.tcaputi.back.stockncook.recipe.service;
 
 import com.tcaputi.back.stockncook.ingredient.model.Ingredient;
 import com.tcaputi.back.stockncook.ingredient.service.IngredientService;
+import com.tcaputi.back.stockncook.recipe.exception.NotEnoughIngredientException;
 import com.tcaputi.back.stockncook.recipe.model.Recipe;
 import com.tcaputi.back.stockncook.recipe.model.RecipeDto;
 import com.tcaputi.back.stockncook.recipe.model.RecipeIngredient;
@@ -59,7 +60,7 @@ public class RecipeService {
             double needed = ri.getAmountRequired();
 
             if (available < needed) {
-                throw new RuntimeException("Not enough stock for ingredient: " + ingredient.getName());
+                throw new NotEnoughIngredientException("Not enough stock for ingredient: " + ingredient.getName());
             }
         }
     }
