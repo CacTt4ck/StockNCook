@@ -49,6 +49,10 @@ public class RecipeService {
         return recipeRepository.save(recipe);
     }
 
+    public List<Recipe> getAllRecipes() {
+        return recipeRepository.findAll();
+    }
+
 
     public void simulateRecipePreparation(Long id) {
         Recipe recipe = getRecipe(id);
