@@ -23,3 +23,7 @@ spring:
       hibernate:
         format_sql: true
     database: postgresql
+
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG

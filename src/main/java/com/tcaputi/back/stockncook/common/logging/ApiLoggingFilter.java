@@ -1,25 +1,21 @@
 package com.tcaputi.back.stockncook.common.logging;
 
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import lombok.NonNull;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
-import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.filter.CommonsRequestLoggingFilter;
 
-import java.io.IOException;
+@Configuration
+public class ApiLoggingFilter {
 
-@Slf4j
-@Component
-public class ApiLoggingFilter extends OncePerRequestFilter {
-
-    @Override
-    protected void doFilterInternal(HttpServletRequest request, @NonNull HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        log.info("[API Request] - Method: {}, URL: {}", request.getMethod(), request.getRequestURI());
-        filterChain.doFilter(request, response);
-        log.info("[API Response] - Status: {}", response.getStatus());
+    @Bean
+    public CommonsRequestLoggingFilter requestLoggingFilter() {
+        CommonsRequestLoggingFilter loggingFilter = new CommonsRequestLoggingFilter();
+        loggingFilter.setIncludeQueryString(true);
+        loggingFilter.setIncludePayload(true);
+        loggingFilter.setMaxPayloadLength(1000);
+        loggingFilter.setIncludeHeaders(true);
+        loggingFilter.setIncludeClientInfo(true);
+        return loggingFilter;
     }
 
 }
