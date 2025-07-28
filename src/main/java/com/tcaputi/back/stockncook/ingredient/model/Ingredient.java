@@ -3,7 +3,6 @@ package com.tcaputi.back.stockncook.ingredient.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Data

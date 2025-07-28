@@ -1,7 +1,6 @@
 package com.tcaputi.back.stockncook.ingredient.openfoodfacts;
 
 import com.tcaputi.back.stockncook.ingredient.model.Ingredient;
-import com.tcaputi.back.stockncook.ingredient.model.Unit;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
