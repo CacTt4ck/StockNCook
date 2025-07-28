@@ -1,6 +1,7 @@
 package com.tcaputi.back.stockncook.ingredient.openfoodfacts;
 
 import com.tcaputi.back.stockncook.ingredient.model.Ingredient;
+import com.tcaputi.back.stockncook.ingredient.model.Unit;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -41,6 +42,7 @@ public class OpenFoodFactsService {
 
     private Ingredient getIngredient(String ean13, OpenFoodFactsResponse response) {
         OpenFoodFactsProduct product = response.getProduct();
+        log.info("Fetched ingredient from OpenFoodFacts: [{}]", product);
 
         Ingredient ingredient = new Ingredient();
         ingredient.setName(product.getProductName());
@@ -48,8 +50,8 @@ public class OpenFoodFactsService {
         ingredient.setFats(parseDouble(product.getNutriments().getFat()));
         ingredient.setCarbohydrates(parseDouble(product.getNutriments().getCarbohydrates()));
         ingredient.setCalories(parseDouble(product.getNutriments().getEnergyKcal()));
-        ingredient.setQuantity(1.0); // Default quantity
-        ingredient.setUnit(Ingredient.Unit.UNIT); // Default unit
+        ingredient.setQuantity(parseDouble(product.getProductQuantity()));
+        ingredient.setUnit(product.getProductQuantityUnit());
         ingredient.setEan13(ean13);
         return ingredient;
     }

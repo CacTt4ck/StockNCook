@@ -41,10 +41,8 @@ public class IngredientService {
                         // 🌍 Si pas trouvé localement, aller chercher sur OpenFoodFacts
                         log.info("Fetching ingredient from OpenFoodFacts for EAN: [{}]", ingredient.getEan13());
                         Optional<Ingredient> fromOpenFoodFacts = openFoodFactsService.fetchIngredientFromOpenFoodFacts(ingredient.getEan13());
-                        return fromOpenFoodFacts.map(fetched -> {
-                            fetched.setQuantity(ingredient.getQuantity()); // Mettre la quantité reçue
-                            return ingredientRepository.save(fetched);
-                        }).orElseGet(() -> ingredientRepository.save(ingredient));
+                        return fromOpenFoodFacts.map(ingredientRepository::save)
+                    .orElseGet(() -> ingredientRepository.save(ingredient));
                     });
         } else {
             return ingredientRepository.save(ingredient);

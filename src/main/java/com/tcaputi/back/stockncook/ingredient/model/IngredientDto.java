@@ -33,7 +33,7 @@ public class IngredientDto {
     @Positive
     private Double quantity;
 
-    private Ingredient.Unit unit;
+    private Unit unit;
 
     @Size(min = 13, max = 13)
     private String ean13;
