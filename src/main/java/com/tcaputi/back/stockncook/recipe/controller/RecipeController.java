@@ -2,7 +2,6 @@ package com.tcaputi.back.stockncook.recipe.controller;
 
 import com.tcaputi.back.stockncook.recipe.model.Recipe;
 import com.tcaputi.back.stockncook.recipe.model.RecipeDto;
-import com.tcaputi.back.stockncook.recipe.model.RecipeIngredient;
 import com.tcaputi.back.stockncook.recipe.service.RecipeService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;

@@ -1,9 +1,9 @@
 package com.tcaputi.back.stockncook.ingredient.controller;
 
-import com.tcaputi.back.stockncook.ingredient.service.IngredientService;
 import com.tcaputi.back.stockncook.ingredient.model.ConsumeIngredientDto;
 import com.tcaputi.back.stockncook.ingredient.model.Ingredient;
 import com.tcaputi.back.stockncook.ingredient.model.IngredientDto;
+import com.tcaputi.back.stockncook.ingredient.service.IngredientService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

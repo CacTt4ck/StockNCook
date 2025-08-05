@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 
 import com.tcaputi.back.stockncook.ingredient.model.Ingredient;
 import com.tcaputi.back.stockncook.ingredient.exception.IngredientException;
+import com.tcaputi.back.stockncook.ingredient.model.Unit;
 import com.tcaputi.back.stockncook.ingredient.repository.IngredientRepository;
 import com.tcaputi.back.stockncook.ingredient.service.IngredientService;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,7 +36,7 @@ class IngredientServiceTest {
                 6.0, 0.2, 3.6, 60.0,
                 2400.0, // quantity = (5*450)+150
                 "3329770077003",
-                Ingredient.Unit.GRAM,
+                Unit.GRAM,
                 5, // 5 pots
                 150.0, // 150g open
                 450.0  // 450g per pot

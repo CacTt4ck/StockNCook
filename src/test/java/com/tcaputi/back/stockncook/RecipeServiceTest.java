@@ -1,6 +1,7 @@
 package com.tcaputi.back.stockncook;
 
 import com.tcaputi.back.stockncook.ingredient.model.Ingredient;
+import com.tcaputi.back.stockncook.ingredient.model.Unit;
 import com.tcaputi.back.stockncook.ingredient.service.IngredientService;
 import com.tcaputi.back.stockncook.recipe.model.Recipe;
 import com.tcaputi.back.stockncook.recipe.model.RecipeDto;
@@ -42,7 +43,7 @@ class RecipeServiceTest {
                 1.1, 0.3, 22.8, 89.0,
                 500.0,
                 "1111111111111",
-                Ingredient.Unit.GRAM,
+                Unit.GRAM,
                 1,
                 50.0,
                 450.0
@@ -56,7 +57,7 @@ class RecipeServiceTest {
                 3.4, 3.6, 5.0, 60.0,
                 1000.0,
                 "2222222222222",
-                Ingredient.Unit.MILLILITER,
+                Unit.MILLILITER,
                 1,
                 0.0,
                 1000.0

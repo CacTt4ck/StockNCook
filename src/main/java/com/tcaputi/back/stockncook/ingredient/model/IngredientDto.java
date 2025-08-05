@@ -1,9 +1,12 @@
 package com.tcaputi.back.stockncook.ingredient.model;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import jakarta.validation.constraints.*;
 
 @Data
 @NoArgsConstructor
@@ -30,7 +33,7 @@ public class IngredientDto {
     @Positive
     private Double quantity;
 
-    private Ingredient.Unit unit;
+    private Unit unit;
 
     @Size(min = 13, max = 13)
     private String ean13;

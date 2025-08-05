@@ -1,0 +1,38 @@
+services:
+  app:
+    build: .
+    container_name: stockncook-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/stockncook
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    networks:
+      - stockncook-network
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16.9
+    container_name: stockncook-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=stockncook
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - stockncook-network
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+
+networks:
+  stockncook-network:
+    driver: bridge

@@ -2,6 +2,7 @@ package com.tcaputi.back.stockncook.ingredient.openfoodfacts;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.tcaputi.back.stockncook.ingredient.model.Unit;
 import lombok.Data;
 
 @Data
@@ -10,6 +11,12 @@ public class OpenFoodFactsProduct {
 
     @JsonProperty("product_name")
     private String productName;
+
+    @JsonProperty("product_quantity")
+    private String productQuantity;
+
+    @JsonProperty("product_quantity_unit")
+    private Unit productQuantityUnit;
 
     private Nutriments nutriments;
 
