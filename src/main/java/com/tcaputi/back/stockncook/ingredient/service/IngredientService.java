@@ -28,6 +28,10 @@ public class IngredientService {
         return ingredientRepository.findById(id).orElseThrow(() -> new IngredientException("Ingredient not found for id: [" + id + "]"));
     }
 
+    public Ingredient getIngredientByEan13(String ean13) {
+        return ingredientRepository.findByEan13(ean13).orElseThrow(() -> new IngredientException("Ingredient not found for ean13: [" + ean13 + "]"));
+    }
+
     public Ingredient addIngredient(Ingredient ingredient) {
         if (ingredient.getEan13() != null) {
             return ingredientRepository.findByEan13(ingredient.getEan13())
@@ -91,5 +95,4 @@ public class IngredientService {
 
         return ingredientRepository.save(ingredient);
     }
-
 }

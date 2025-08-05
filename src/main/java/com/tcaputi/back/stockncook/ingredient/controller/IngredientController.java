@@ -32,6 +32,11 @@ class IngredientController {
         return convertToDto(ingredientService.getIngredientById(id));
     }
 
+    @GetMapping("/ean/{ean13}")
+    public IngredientDto getIngredientByEan13(@PathVariable String ean13) {
+        return convertToDto(ingredientService.getIngredientByEan13(ean13));
+    }
+
     @PostMapping
     public IngredientDto addIngredient(@RequestBody IngredientDto ingredientDto) {
         Ingredient ingredient = convertToEntity(ingredientDto);
